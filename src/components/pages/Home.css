@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Balsamiq Sans";
+  src: url(../../../public/BalsamiqSans-Regular.ttf);
+}
+.home {
+  width: 70%;
+  height: 100%;
+  font-family: "Balsamiq Sans";
+}
