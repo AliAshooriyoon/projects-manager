@@ -28,6 +28,19 @@ const Home = ({ projects, statusProject }) => {
                     </p>
                     <p className="tasksBox text-xl">
                       <h3 className="text-4xl text-cyan-700">Aufgaben : </h3>
+                      <div className="addTasksBox flex items-center gap-12">
+                        <input
+                          type="text"
+                          name="task"
+                          className="bg-white outline-0 rounded-[7px] m-2 h-12 w-[25rem] border-blue-500 border-4 indent-2 text-2xl"
+                        />
+                        <button
+                          type="button"
+                          className="text-white cursor-pointer border-4 px-5 py-1.5 border-blue-500 rounded-2xl hover:bg-blue-500 hover:border-white hover:text-black delay-100"
+                        >
+                          erstellen
+                        </button>
+                      </div>
                       <div className="tasksManager  text-white w-[44rem] flex flex-col gap-2 pl-7">
                         {item.tasks.map((i) => (
                           <div
