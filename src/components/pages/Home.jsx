@@ -36,7 +36,7 @@ const Home = ({ projects, statusProject }) => {
                         />
                         <button
                           type="button"
-                          className="text-white cursor-pointer border-4 px-5 py-1.5 border-blue-500 rounded-2xl hover:bg-blue-500 hover:border-white hover:text-black delay-100"
+                          className="text-white cursor-pointer border-4 px-5 py-1.5 border-blue-500 rounded-2xl hover:bg-blue-500 hover:border-white"
                         >
                           erstellen
                         </button>

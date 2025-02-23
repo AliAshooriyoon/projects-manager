@@ -4,3 +4,21 @@
   background-color: #222;
   color: #eee;
 }
+.showAddProjectBox svg {
+  width: 3rem;
+  height: 3rem;
+  margin: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  fill: #00879e;
+}
+.tabbar_button {
+  /* border: 4px solid #dad4b5; */
+  cursor: pointer;
+  padding: 0.7rem 2rem;
+  border-radius: 0.6rem;
+}
+textarea {
+  max-height: 17rem;
+}
