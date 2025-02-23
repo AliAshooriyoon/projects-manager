@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./Tabbar.css";
 import { IoMdCloseCircle } from "react-icons/io";
 
 const Tabbar = ({ projects, changeStat, addProject }) => {
   console.log(projects);
+  const [counter, setCounter] = useState(3);
   const [showAddProjectBox, setShowAddProjectBox] = useState(false);
+  const titleNewProject = useRef();
+  const descriptionNewProject = useRef();
+  const verifyNewProject = (titleProject, descriptionProject) => {
+    console.log(titleNewProject.current.value);
+    console.log(descriptionNewProject.current.value);
+    console.log(counter);
+
+    //  titleProject.current.value && descriptionProject.current.value && addProject(titleProject.current.value,descriptionProject.current.value)
+    if (titleProject.current.value && descriptionProject.current.value) {
+      addProject(
+        titleProject.current.value,
+        descriptionProject.current.value,
+        counter,
+      );
+      setShowAddProjectBox(false);
+      setCounter(counter + 1);
+    }
+  };
   return (
     <>
       {showAddProjectBox && (
@@ -18,6 +37,7 @@ const Tabbar = ({ projects, changeStat, addProject }) => {
               Wie heißt dein Projekt?
               <input
                 type="text"
+                ref={titleNewProject}
                 className=" w-[60%] mx-auto h-14 rounded-2xl bg-[#BED7DC] border-4 outline-0 indent-5 text-2xl border-[#00879e] text-black"
               />
             </div>
@@ -25,12 +45,16 @@ const Tabbar = ({ projects, changeStat, addProject }) => {
               Wie sind Informationen deines Projekts ?
               <textarea
                 type="text"
+                ref={descriptionNewProject}
                 className=" w-[60%] mx-auto h-14 mx-h-64 rounded-2xl bg-[#BED7DC] border-4 outline-0 indent-5 text-2xl border-[#00879e] text-black"
               />
             </div>
             <div className="absolute  bottom-8 buttonsBox flex align-bottom flex-row w-full justify-center gap-10">
               <button
                 type="button"
+                onClick={() =>
+                  verifyNewProject(titleNewProject, descriptionNewProject)
+                }
                 className="border-[#dad4b5] border-4 tabbar_button bg-[#508D4E] hover:border-[#508D4E] hover:bg-[#BED7DC] "
               >
                 Projekt erstellen
@@ -59,7 +83,7 @@ const Tabbar = ({ projects, changeStat, addProject }) => {
           <img src="icons8-plus.svg" alt="" className="w-7 h-7" />
           neues Projekt erstellen
         </button>
-        <div className="projectsManager w-96 ml-16 mt-10 rounded-2xl text-xl outline-0 flex flex-col gap-10">
+        <div className="projectsManager w-96 ml-16 mt-10 rounded-2xl overflow-hidden text-xl outline-0 flex flex-col gap-10">
           {projects.map((item) => {
             return (
               <div

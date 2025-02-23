@@ -26,16 +26,27 @@ const App = () => {
     },
   ]);
   const [showProject, setShowProject] = useState(0);
-  const addProject = (title,description)=>{
-    projects.push({title:title,description:description})
-  }
+  const addProject = (title, description, id) => {
+    projects.push({
+      title: title,
+      description: description,
+      id: id,
+      tasks: [],
+    });
+    console.log("Adding Project");
+    console.log(projects);
+  };
   const changeStatusProject = (stat) => {
     setShowProject(stat);
   };
   return (
     <>
-      <div className="app ">
-        <Tabbar projects={projects} changeStat={changeStatusProject} addProject={addProject} />
+      <div className="app">
+        <Tabbar
+          projects={projects}
+          changeStat={changeStatusProject}
+          addProject={addProject}
+        />
         <Home projects={projects} statusProject={showProject} />
       </div>
     </>
