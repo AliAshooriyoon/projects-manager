@@ -65,6 +65,21 @@ const App = () => {
     projects[indexOfTask].tasks.push({ task: titleTask, id: counterTask });
     setCounterTask(counterTask + 1);
   };
+  const removeTask = (projectID, taskID) => {
+    // const finder = projects.find((item) => item.id == projectID);
+    const finder = projects.find((item) => item.id == projectID);
+    const indexOfProject = projects.indexOf(finder);
+    const currentProject = projects[indexOfProject];
+    const currentTask = currentProject.tasks.find((item) => item.id == taskID);
+    const indexOfTask = currentProject.tasks.indexOf(currentTask);
+    console.log(currentTask);
+    projects[indexOfProject].tasks.splice(indexOfTask, 1);
+    console.log(projects[indexOfProject]);
+    console.log(indexOfTask);
+    console.log(projects[indexOfProject].tasks);
+
+    console.log(taskID);
+  };
   return (
     <>
       <div className="app">
@@ -78,6 +93,7 @@ const App = () => {
           projects={projects}
           statusProject={showProject}
           addTask={addTask}
+          removeTask={removeTask}
         />
       </div>
     </>

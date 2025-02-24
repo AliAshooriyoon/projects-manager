@@ -1,8 +1,19 @@
 import { useRef } from "react";
 import "./Home.css";
-//eslint-disable-next-line
-const Home = ({ projects, statusProject, removeProject, addTask }) => {
+const Home = ({
+  //eslint-disable-next-line
+  projects,
+  //eslint-disable-next-line
+  statusProject,
+  //eslint-disable-next-line
+  removeProject,
+  //eslint-disable-next-line
+  addTask,
+  //eslint-disable-next-line
+  removeTask,
+}) => {
   const taskInput = useRef();
+  const taskIndex = useRef();
   const verifyAddTask = () => {
     addTask(taskInput.current.value, statusProject);
     taskInput.current.value = "";
@@ -59,11 +70,13 @@ const Home = ({ projects, statusProject, removeProject, addTask }) => {
                           <div
                             className="my-5 bg-zinc-700 p-3 flex justify-between"
                             key={i.id}
+                            ref={taskIndex}
                           >
                             {i.task}{" "}
                             <button
                               className="text-black cursor-pointer"
                               type="button"
+                              onClick={() => removeTask(statusProject, i.id)}
                             >
                               Löschen
                             </button>{" "}
