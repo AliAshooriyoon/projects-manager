@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import "./Home.css";
 const Home = ({
   //eslint-disable-next-line
@@ -11,13 +11,16 @@ const Home = ({
   addTask,
   //eslint-disable-next-line
   removeTask,
+  //eslint-disable-next-line
+  taskStatus,
 }) => {
   const taskInput = useRef();
-  const taskIndex = useRef();
+  // const taskIndex = useRef();
   const verifyAddTask = () => {
     addTask(taskInput.current.value, statusProject);
     taskInput.current.value = "";
   };
+  useEffect(() => console.log("Slm"), [taskStatus]);
   return (
     <>
       <div className="home">
@@ -70,7 +73,7 @@ const Home = ({
                           <div
                             className="my-5 bg-zinc-700 p-3 flex justify-between"
                             key={i.id}
-                            ref={taskIndex}
+                            // ref={taskIndex}
                           >
                             {i.task}{" "}
                             <button

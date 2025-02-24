@@ -27,6 +27,7 @@ const App = () => {
       id: 2,
     },
   ]);
+  const [acceptDeletedTask, setAcceptDeletedTask] = useState(1);
   const [showProject, setShowProject] = useState(0);
   const addProject = (title, description, id) => {
     projects.push({
@@ -74,11 +75,11 @@ const App = () => {
     const indexOfTask = currentProject.tasks.indexOf(currentTask);
     console.log(currentTask);
     projects[indexOfProject].tasks.splice(indexOfTask, 1);
+    console.log(projects);
     console.log(projects[indexOfProject]);
     console.log(indexOfTask);
     console.log(projects[indexOfProject].tasks);
-
-    console.log(taskID);
+    setAcceptDeletedTask(acceptDeletedTask + 1);
   };
   return (
     <>
@@ -94,6 +95,7 @@ const App = () => {
           statusProject={showProject}
           addTask={addTask}
           removeTask={removeTask}
+          taskStatus={acceptDeletedTask}
         />
       </div>
     </>
