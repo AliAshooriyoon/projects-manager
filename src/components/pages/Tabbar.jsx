@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import "./Tabbar.css";
 import { IoMdCloseCircle } from "react-icons/io";
-
+// eslint-disable-next-line
 const Tabbar = ({ projects, changeStat, addProject }) => {
   console.log(projects);
   const [counter, setCounter] = useState(3);
@@ -84,6 +84,7 @@ const Tabbar = ({ projects, changeStat, addProject }) => {
           neues Projekt erstellen
         </button>
         <div className="projectsManager w-96 ml-16 mt-10 rounded-2xl overflow-hidden text-xl outline-0 flex flex-col gap-10">
+          {/*eslint-disable-next-line*/}
           {projects.map((item) => {
             return (
               <div

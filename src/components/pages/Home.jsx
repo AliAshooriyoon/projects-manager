@@ -1,5 +1,6 @@
 import "./Home.css";
-const Home = ({ projects, statusProject }) => {
+//eslint-disable-next-line
+const Home = ({ projects, statusProject, removeProject }) => {
   return (
     <>
       <div className="home">
@@ -14,12 +15,16 @@ const Home = ({ projects, statusProject }) => {
           </h2>
         ) : (
           <div className="pl-3 text-left text-6xl pt-[1rem]">
+            {/*eslint-disable-next-line*/}
             {projects.map((item) => {
-              if (item.id == statusProject) {
+              if (item.id === statusProject) {
                 return (
-                  <div className="projectBox flex flex-col gap-6">
+                  <div key={item.id} className="projectBox flex flex-col gap-6">
                     <p className="title">{item.title}</p>
-                    <button className="absolute right-8 text-xl text-center border-2 w-32 outline-0 border-white cursor-pointer p-1 bg-red-500 rounded-2xl ">
+                    <button
+                      onClick={() => removeProject(item.id)}
+                      className="absolute right-8 text-xl text-center border-2 w-32 outline-0 border-white cursor-pointer p-1 bg-red-500 rounded-2xl "
+                    >
                       Löschen
                     </button>
 
