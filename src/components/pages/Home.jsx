@@ -1,6 +1,12 @@
+import { useRef } from "react";
 import "./Home.css";
 //eslint-disable-next-line
-const Home = ({ projects, statusProject, removeProject }) => {
+const Home = ({ projects, statusProject, removeProject, addTask }) => {
+  const taskInput = useRef();
+  const verifyAddTask = () => {
+    addTask(taskInput.current.value, statusProject);
+    taskInput.current.value = "";
+  };
   return (
     <>
       <div className="home">
@@ -37,10 +43,12 @@ const Home = ({ projects, statusProject, removeProject }) => {
                         <input
                           type="text"
                           name="task"
+                          ref={taskInput}
                           className="bg-white outline-0 rounded-[7px] m-2 h-12 w-[25rem] border-blue-500 border-4 indent-2 text-2xl"
                         />
                         <button
                           type="button"
+                          onClick={() => verifyAddTask()}
                           className="text-white cursor-pointer border-4 px-5 py-1.5 border-blue-500 rounded-2xl hover:bg-blue-500 hover:border-white"
                         >
                           erstellen

@@ -3,8 +3,7 @@ import "./App.css";
 import Tabbar from "./components/pages/Tabbar";
 import { useState } from "react";
 const App = () => {
-  //eslint-disable-next-line
-  const [counter, setCounter] = useState(3);
+  const [counterTask, setCounterTask] = useState(3);
   //eslint-disable-next-line
   const [projects, setProjects] = useState([
     {
@@ -51,8 +50,20 @@ const App = () => {
     // console.log(finder.id);
     changeStatusProject(0);
   };
-  const doCounter = (num) => {
-    setCounter(num);
+  const addTask = (titleTask, idTask) => {
+    const finder = projects.find((item) => item.id == idTask);
+    console.log(finder);
+    const indexOfTask = projects.indexOf(finder);
+    console.log(indexOfTask);
+
+    console.log(
+      projects[indexOfTask].tasks[projects[indexOfTask].tasks.length - 1],
+    );
+    setCounterTask(
+      projects[indexOfTask].tasks[projects[indexOfTask].tasks.length - 1],
+    );
+    projects[indexOfTask].tasks.push({ task: titleTask, id: counterTask });
+    setCounterTask(counterTask + 1);
   };
   return (
     <>
@@ -61,12 +72,12 @@ const App = () => {
           projects={projects}
           changeStat={changeStatusProject}
           addProject={addProject}
-          doCounter={doCounter}
         />
         <Home
           removeProject={removeProject}
           projects={projects}
           statusProject={showProject}
+          addTask={addTask}
         />
       </div>
     </>
